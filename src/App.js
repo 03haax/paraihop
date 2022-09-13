@@ -10,7 +10,7 @@ export default function App() {
 
   const handlePaste = (event, test) => {
     const str = event.clipboardData.getData('text');
-    const all = str.split(/ [0-9]+ [A-Z] |\n/);
+    const all = str.split(/ [0-9]+[ ]{1,}[A-Z] |\n/);
     
     if (all.length < 4) { 
       setShake((prevState) => prevState + 1); 
@@ -66,11 +66,9 @@ export default function App() {
       longest = test > longest ? test : longest;
     }
 
-    longest++;
-
     let text = '';
     for (let i = 0; i < content.length; i+=2) {
-      text += `${content[i].text}${' '.repeat(longest - content[i].text.length)} ${content[i].key}${(content.length > 18 && i < 18) ? ' ' : ''} ${content[i+1].key} ${content[i+1].text}\n`;
+      text += `${content[i].text}${' '.repeat(longest - content[i].text.length)} ${content[i].key}${(content.length > 18 && i < 18) ? ' ' : ''} ${content[i+1].key} ${content[i+1].text}${content.length - 2 === i ? '' : '\n'}`;
     }
 
     const blob = new Blob([text], { 
