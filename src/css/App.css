@@ -1,0 +1,108 @@
+* { 
+    box-sizing: border-box;
+    --color1: #E5E3C9;
+    --color2: #e89090;
+    --color3: #90e050;
+    font-family: 'Courier New', monospace;
+}  
+
+.App {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.paste {
+    width: 80%;
+    height: 80%;
+    background-color: #dddddd;
+    caret-color: transparent;
+    text-align-last: center;
+    font-size: 1.5em;
+    padding-top: calc(40vh - 20px);
+    background-image: url("../img/paste.svg");
+    background-repeat: no-repeat;
+    background-position: 50% calc(50% - 80px);
+    background-size: 100px;
+}
+
+.shake {
+    animation-name: shake;
+    animation-duration: 0.2s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+}
+
+@keyframes shake {
+    0% { margin: 0 0 0 0; }
+    25%, 35% { margin: 0 10px 0 0; }
+    75%, 85% { margin: 0 0 0 10px }
+    100% { margin: 0 0 0 0; }
+}
+
+.content {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.content button {
+    all: unset;
+    background-color: var(--color2);
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    user-select: none;
+}
+
+.content .selected {
+    opacity: 0.25;
+}
+
+.question {
+    justify-content: flex-start;
+}
+
+.answer {
+    justify-content: flex-start;
+}
+
+.buttons {
+    margin-bottom: -10px;
+    width: 100%;
+    max-width: 800px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 4px;
+    gap: 8px;
+}
+
+.buttons button {
+    all: unset;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    transition-duration: 0.25s;
+    overflow: hidden;
+}
+
+.buttons button:hover, .buttons button:focus {
+    background-color: #ffffff80;
+    transform: scale(1.2);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
