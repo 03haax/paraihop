@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/paraihop/static/css/main.f57dcd94.css",
+    "main.js": "/paraihop/static/js/main.95c12251.js",
+    "index.html": "/paraihop/index.html",
+    "static/media/reload.svg": "/paraihop/static/media/reload.fb73535b5738d552c50ed470d8c894da.svg",
+    "static/media/paste.svg": "/paraihop/static/media/paste.8713d7b634216afd73e7.svg",
+    "static/media/download.svg": "/paraihop/static/media/download.e68eac0d553a8e6bcbbedc406a0d734b.svg",
+    "main.f57dcd94.css.map": "/paraihop/static/css/main.f57dcd94.css.map",
+    "main.95c12251.js.map": "/paraihop/static/js/main.95c12251.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f57dcd94.css",
+    "static/js/main.95c12251.js"
+  ]
+}
