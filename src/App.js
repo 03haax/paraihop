@@ -11,7 +11,7 @@ export default function App() {
   const handlePaste = (event, test) => {
     const str = event.clipboardData.getData('text');
     const all = str.split(/ [0-9]+[ ]{1,}[A-Z] |\n/);
-    
+    //hej här är en test kommentar
     if (all.length < 4) { 
       setShake((prevState) => prevState + 1); 
       return; 
