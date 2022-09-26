@@ -54,8 +54,16 @@ export default function App() {
   }
 
   const handlePage = (page) => {
+    page = parseInt(page);
     for (let i = 0; i < questions.length; i++) {
-      if (questions[i].page === parseInt(page)) {
+      if (questions[i].page === page) {
+
+        if (questions[i].page === questions[i + 1].page) {
+          let duplicate = parseInt(prompt("There are two questions on this page. Do you want 1 or 2?"));
+          if (duplicate !== 1 && duplicate !== 2) break;
+          if (duplicate === 2) i++;
+        }
+
         let array = [];
 
         const letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
