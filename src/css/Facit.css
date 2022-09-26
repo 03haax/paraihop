@@ -1,0 +1,26 @@
+.Facit {
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+#long {
+    all: unset;
+    width: 100%;
+    height: 100%;
+    white-space: pre;
+    overflow: scroll;
+    caret-color: transparent;
+    background-color: white;
+    opacity: 0.5;
+}
+
+#long:focus {
+    opacity: 1;
+}

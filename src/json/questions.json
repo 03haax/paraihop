@@ -1,0 +1,162 @@
+[
+    {
+    "page":39,
+    "questions":["litteral","sträng","sats","uttryck","funktion","procedur","exekveringsfel","kompileringsfel","abstrahera","kompilera","typ","for-sats","while-sats","tilldelning","flyttal","boolesk"],
+    "answers":["att införa nya begrepp som förenklar kodningen","antingen sann eller falsk","att översätta kod till exekverbar form","anger ett specifikt datavärde","decimaltal med begränsad noggrannhet","en kodrad som gör något; kan särskiljas med semikolon","en sekvens av tecken","kombinerar värden och funktioner till ett nytt värde","beskriver vad data kan användas till","vid anrop sker (sido)effekt; returvärdet är tomt","vid anrop beräknas ett returvärde","för att ändra en variabels värde","kan inträffa innan exekveringen startat","kan inträffa medan programmet kör","bra då antalet repetitioner är bestämt i förväg","bra då antalet repetitioner ej är bestämt i förväg"]
+    },
+    {
+    "page":40,
+    "questions":["1","1L","1.0","1D","1F","'1'","\"1\"","true","false","()"],
+    "answers":["String","Boolean","Boolean","Unit","Int","Double","Long","Float","Char","Double"]
+    },
+    {
+    "page":43,
+    "questions":["4 / 42","42.0 / 2","42 / 4","42 % 4","4 % 42","40 % 4 == 0","42 % 4 == 0"],
+    "answers":["4: Int","10: Int","21.0: Double","true : Boolean","false: Boolean","0: Int","2: Int"]
+    },
+    {
+    "page":46,
+    "questions":["1.0 + 18","(41 + 1).toDouble","1.042e42 + 1","12E6.toLong","32.toChar.toString","'A'.toInt","0.toInt","'0'.toInt","'9'.toInt","'A' + '0'","('A' + '0').toChar","\"*!%#\".charAt(0)"],
+    "answers":["1.042E42: Double","65: Int","113: Int","48: Int","\" \": String","0: Int","'*': Char","19.0: Double","12000000: Long","'q': Char","42.0: Double","57: Int"]
+    },
+    {
+    "page":77,
+    "questions":["kompilerad","skript","objekt","@main","programargument","datastruktur","samling","sekvenssamling","Array","Vector","Range","yield","map","algoritm","implementation"],
+    "answers":["kan överföras via parametern args till main","många olika element i en helhet; elementvis åtkomst","datastruktur med element av samma typ","en specifik realisering av en algoritm","en oföränderlig, indexerbar sekvenssamling","datastruktur med element i en viss ordning","samlar variabler och funktioner","applicerar en funktion på varje element i en samling","maskinkod sparad och kan köras igen utan kompilering","maskinkod sparas ej utan skapas vid varje körning","en förändringsbar, indexerbar sekvenssamling","där exekveringen av kompilerat program startar","stegvis beskrivning av en lösning på ett problem","en samling som representerar ett intervall av heltal","används i for-uttryck för att skapa ny samling"]
+    },
+    {
+    "page":79,
+    "questions":["val xs = Vector(2)","val ys = Array.fill(9)(0)","Vector.fill(9)(' ')","xs(0)","xs.apply(0)","xs :+ 0","0 +: xs","ys.mkString","ys.mkString(\",\")","xs.map(_.toString)","xs map (_.toInt)"],
+    "answers":["ny samling med en nolla tillagd på slutet","ny samling, elementen omgjorda till heltal","ny referens till förändringsbar sekvens","ny samling, elementen omgjorda till strängar","förkortad skrivning av apply(0)","indexering, ger första elementet","ny sträng med komma mellan elementen","ny samling med en nolla tillagd i början","ny referens till sekvens av längd 1","ny oföränderlig sekvens med blanktecken","ny sträng med alla element intill varandra"]
+    },
+    {
+    "page":81,
+    "questions":["for x <- xs yield x * 2","for i <- xs.indices yield i","xs.map(x => x + 1)","for i <- 0 to 1 yield xs(i)","(1 to 3).map(i => i)","(1 until 3).map(i => xs(i))"],
+    "answers":["Vector(2, 4, 6)","Vector(1, 2)","Vector(1, 2, 3)","Vector(2, 3, 4)","Vector(0, 1, 2)","Vector(2, 3)"]
+    },
+    {
+    "page":103,
+    "questions":["funktionshuvud","funktionskropp","parameterlista","block","namngivna argument","defaultargument","värdeanrop","namnanrop","äkta funktion","predikat","slumptalsfrö","anonym funktion","rekursiv funktion"],
+    "answers":["gör att argument kan ges i valfri ordning","ger alltid samma resultat om samma argument","funktion utan namn; kallas även lambda","koden som exekveras vid funktionsanrop","har parameterlista och eventuellt en returtyp","argumentet evalueras innan anrop","ger återupprepningsbar sekvens av pseudoslumptal","gör att argument kan utelämnas","en funktion som ger ett booleskt värde","kan ha lokala namn; sista raden ger värdet","en funktion som anropar sig själv","fördröjd evaluering av argument","beskriver namn och typ på parametrar"]
+    },
+    {
+    "page":105,
+    "questions":["options.indices","\"1X2\".toLowercase","Random.nextInt(n)","try { } catch { }","\"\"\" ... \"\"\"","s.stripMargin","e.printStackTrace"],
+    "answers":["gör om en sträng till små bokstäver","heltalssekvens med alla index i en sekvens","slumptal i intervallet 0 until n","tar bort marginal till och med vertikalstreck","fångar undantag för att förhindra krasch","sträng som kan sträcka sig över flera kodrader","skriver ut information om ett undantag"]
+    },
+    {
+    "page":106,
+    "questions":["for i <- 1 to 3 yield öka(i)","Vector(2, 3, 4).map(i => öka(i))","xs.map(öka)","xs.map(öka).map(öka)","xs.foreach(öka)"],
+    "answers":["xs","Vector(4, 5, 6)","()","Vector(5, 6, 7)","Vector(2, 3, 4)"]
+    },
+    {
+    "page":107,
+    "questions":["fleraAnrop(1, hälsa)","fleraAnrop(3, hälsa)","fleraAnrop(2, f1)","fleraAnrop(1, f3)"],
+    "answers":["f2(\"Hej!\\nHej!\")","fleraAnrop(3, f1)","f3()","f2(\"Hej!\")"]
+    },
+    {
+    "page":107,
+    "questions":["(0 to 2).map(i => i + 1)","(1 to 3).map(_ + 1)","(2 to 4).map(math.pow(2, _))","(3 to 5).map(math.pow(_, 2))","(4 to 6).map(_.toDouble).map(_ / 2)"],
+    "answers":["Vector(9.0, 16.0, 25.0)","(2 to 4).map(i => i - 1)","Vector(2.0, 2.5, 3.0)","Vector(2, 3, 4)","Vector(4.0, 8.0, 16.0)"]
+    },
+    {
+    "page":133,
+    "questions":["modul","singelobjekt","paket","import","export","lat initialisering","medlem","attribut","metod","privat","överlagring","namnskuggning","namnrymd","uniform access","punktnotation","typalias"],
+    "answers":["funktion som är medlem av ett objekt","modul som kan ha tillstånd; finns i en enda upplaga","kodenhet med abstraktioner som kan återanvändas","modul som skapar namnrymd; maskinkod får egen katalog","tillhör ett objekt; nås med punktnotation om synlig","gör namn tillgängligt lokalt utan att hela sökvägen behövs","allokering sker först när namnet refereras","variabel som utgör (del av) ett objekts tillstånd","omgivning där är alla namn är unika","metoder med samma namn men olika parametertyper","modifierar synligheten av en objektmedlem","lokalt namn döljer samma namn i omgivande block","ändring mellan def och val påverkar ej användning","alternativt namn på typ som ofta ökar läsbarheten","används för att komma åt icke-privata delar","gör namn synligt utåt som medlem i detta objekt"]
+    },
+    {
+    "page":176,
+    "questions":["klass","instans","konstruktor","klassparameter","referenslikhet","innehållslikhet","case-klass","getter","setter","kompanjonsobjekt","fabriksmetod","null","new"],
+    "answers":["indirekt tilldelning av attributvärde","instanser anses olika även om tillstånden är lika","nyckelord vid direkt instansiering av klass","ser privata medlemmar i klass med samma namn","hjälpfunktion för indirekt konstruktion","slipper skriva new; automatisk innehållslikhet","ett värde som ej refererar till någon instans","en mall för att skapa flera instanser av samma typ","upplaga av ett objekt med eget tillståndsminne","instanser anses lika om de har samma tillstånd","binds till argument som ges vid konstruktion","indirekt åtkomst av attributvärde","skapar instans, allokerar plats för tillståndsminne"]
+    },
+    {
+    "page":177,
+    "questions":["Singelpunkt.x","Punkt.x","val p = new Singelpunkt","val p1 = new Punkt","val p2 = Punkt()","{ p1.x = 1; p2.x }","(new Punkt).y","{ val p: Punkt = null; p.x }"],
+    "answers":["java.lang.NullPointerException","1","Not found: type","p1: Punkt = Punkt@27a1a53c","3","p2: Punkt = Punkt@51ab04bd","value is not a member of object","2"]
+    },
+    {
+    "page":177,
+    "questions":["val p1 = Point(1, 2)","val p2 = Point()","val p2 = Point(3, 4)","p2.x - p1.x","Point(0, 1).y","Point(0, 1, 2)"],
+    "answers":["missing argument for parameter","2","p1: Point = Point@30ef773e","too many arguments for constructor","p2: Point = Point@218cf600","1"]
+    },
+    {
+    "page":178,
+    "questions":["val p1 = Point3D()","val p2 = Point3D(y = 1)","Point3D(z = 2).z","p2.y = 0","p2.y == 0","p1.x == Point3D().x"],
+    "answers":["false","Reassignment to val","p1: Point3D = Point3D@2eb37eee","true","value cannot be accessed","p2: Point3D = Point3D@65a9e8d7"]
+    },
+    {
+    "page":178,
+    "questions":["val p1 = Pt(1, 2)","val p2 = Pt(y = 3)","val p3 = MutablePt(5, 6)","val p4 = Mutable()","p2.moved(dx = 1) == Pt(1, 3)","p3.move(dy = 1) == MutablePt(5, 7)"],
+    "answers":["MPt(5,6)","false","Pt(0,3)","Not found","Pt(1,2)","true"]
+    },
+    {
+    "page":248,
+    "questions":["element","samling","samlingsbibliotek","sekvens(samling)","sekvensalgoritm","ordning","sortering","sökning","linjärsökning","registrering","tidskomplexitet","minneskomplexitet"],
+    "answers":["definierar hur element av en viss typ ska ordnas","datastruktur med element av samma typ","algoritm som ordnar element i en viss ordning","algoritm som letar upp element enligt sökkriterium","hur exekveringstiden växer med problemstorleken","sökalgoritm som letar i sekvens tills element hittas","objekt i en datastruktur","algoritm som räknar element med vissa egenskaper","lösning på problem som drar nytta av sekvenssamling","många färdiga samlingar med olika egenskaper","hur minnesåtgången växer med problemstorleken","noll el. flera element av samma typ i viss ordning"]
+    },
+    {
+    "page":249,
+    "questions":["Vector","List","Array","ArrayBuffer","ListBuffer"],
+    "answers":["förändringsbar, snabb indexering, kan ändra storlek","oföränderlig, ger snabbt godtyckligt ändrad samling","oföränderlig, ger snabbt ny samling ändrad i början","primitiv, förändringsbar, snabb indexering, fix storlek","förändringsbar, snabb att ändra i början"]
+    },
+    {
+    "page":249,
+    "questions":["x +: xs","xs +: x","xs :+ x","xs ++ xs","xs.indices","xs apply 0","xs(3)","xs.length","xs.take(4)","xs.drop(2)","xs.updated(0, 2)","xs.tail.head","xs.head.tail","xs.isEmpty","xs.nonEmpty"],
+    "answers":["true","Vector(2, 2, 3)","1","error: value tail is not a member of Int","(0 until 3)","Vector(1, 2, 3)","Vector(0, 1, 2, 3)","false","java.lang.IndexOutOfBoundsException","Vector(1, 2, 3, 0)","Vector(3)","error: value +: is not a member of Int","Vector(1, 2, 3, 1, 2, 3)","2","3"]
+    },
+    {
+    "page":251,
+    "questions":["{ buf(0) = -1; buf(0) }","{ xs(0) = -1; xs(0) }","buf.update(1, 5)","xs.updated(0, 5)","{ buf += 5; buf }","{ xs += 5; xs }","xs.patch(1,Vector(-1,5),3)","xs"],
+    "answers":["error: value update is not a member","Vector(5, 2, 3, 4)","ArrayBuffer(-1, 5, 3, 4, 5)","-1","Vector(1, -1, 5)","(): Unit","error: value += is not a member","Vector(1, 2, 3, 4)"]
+    },
+    {
+    "page":253,
+    "questions":["xs.indexOf(0)","xs.indexOf(6)","xs.indexWhere(_ < 2)","xs.indexWhere(_ != 5)","xs.find(_ == 1)","xs.find(_ == 6)","xs.contains(0)","xs.filter(_ == 1)","xs.filterNot(_ > 1)","xs.zipWithIndex.filter(_._1 == 1).map(_._2)"],
+    "answers":["Vector(1, 1)","-1","true","Some(1)","Vector(1, 0, 1)","5","Vector(4, 6)","4","1","None"]
+    },
+    {
+    "page":255,
+    "questions":["'a' < 'A'","\"AÄÖö\" < \"AÅÖö\"","xs.sorted.head","xs.sorted.reverse.head","ys.sorted.head","zs.indexOf('a')","ps.sorted.head.förnamn.take(2)","ps.sortBy(_.förnamn).apply(1).förnamn.take(2)","xs.sortWith((x1,x2) => x1 > x2).indexOf(3)"],
+    "answers":["\"ka\"","1","-1","error: ...","false","0","3","true","\"ak\""]
+    },
+    {
+    "page":284,
+    "questions":["matris","radvektor","kolumnvektor","kolonn","generisk","typargument","typhärledning"],
+    "answers":["indexerbar datastruktur i två dimensioner","har abstrakt typparameter, typen är generell","annat ord för kolumn","konkret typ, binds till typparameter vid kompilering","kompilatorn beräknar typ ur sammanhanget","matris av dimension 1 × m med m horisontella värden","matris av dimension m × 1 med m vertikala värden"]
+    },
+    {
+    "page":310,
+    "questions":["mängd","nyckel-värde-tabell","mappning","nyckel","persistens","serialisera","de-serialisera","linjärsöka"],
+    "answers":["leta i sekvens tills sökkriteriet är uppfyllt","avkoda symbolsekvens och återskapa objekt i minnet","en unik identifierare","egenskapen att finnas kvar efter programmets avslut","koda objekt till avkodningsbar sekvens av symboler","oordnad samling av mappningar med unika nycklar","nyckel -> värde","oordnad samling med unika element"]
+    },
+    {
+    "page":311,
+    "questions":["Set(1, 2) ++ Set(1, 2)","(1 to 3).toSet","Vector.fill(3)(1).toSet","Set(1, 2, 3) diff Set(1, 2)","(1 to 7).toSet.apply(8)","Set(1, 2, 3).sorted","Set(2,4) subsetOf (1 to 7).toSet","Set(1, -1, 2, -2).map(_.abs).sum","Set(1, 1, 1, 1, 1, 5).sum"],
+    "answers":["3","Set(3)","6","error: ...","true","Set(1, 2) - 2","Set(1) + 2 + 3","false","Set(1, 2)"]
+    },
+    {
+    "page":313,
+    "questions":["xs(2) + xs(4)","ys(0)","xs(0)","(xs + (0 -> 1)).apply(0)","xs.keySet.apply(2)","xs isDefinedAt 0","xs.getOrElse(0, 7)","xs.maxBy(_._2)","xs.map(p => p._1 -> -p._2)(8)"],
+    "answers":["8","7","(10, 11)","1","(16, 17)","-9","true","false","NoSuchElementException"]
+    },
+    {
+    "page":348,
+    "questions":["bastyp","supertyp","subtyp","körtidstyp","dynamisk bindning","polymorfism","trait","inmixning","överskuggad medlem","anonym klass","skyddad medlem","abstrakt medlem","abstrakt klass","förseglad typ","referenstyp","värdetyp"],
+    "answers":["har supertypen AnyRef, allokeras i heapen via referens","kan ha många former, t.ex. en av flera subtyper","klass utan namn, utvidgad med extra implementation","en typ som är mer specifik","kan ha parametrar, kan ej instansieras, kan ej mixas in","saknar implementation","har supertypen AnyVal, lagras direkt på stacken","tillföra egenskaper med with och en trait","är abstrakt, kan mixas in, kan ej ha parametrar","kan vara mer specifik än den statiska typen","är endast synlig i subtyper","körtidstypen avgör vilken metod som körs","medlem i subtyp ersätter medlem i supertyp","den mest generella typen i en arvshierarki","en typ som är mer generell","subtypning utanför denna kodfil är förhindrad"]
+    },
+    {
+    "page":571,
+    "questions":["for x <- xs yield x * 2","for i <- xs.indices yield i","xs.map(x => x + 1)","for i <- 0 to 1 yield xs(i)","(1 to 3).map(i => i)","(1 until 3).map(i => xs(i))"],
+    "answers":["Vector(2, 4, 6)","Vector(0, 1, 2)","Vector(2, 3, 4)","Vector(1, 2)","Vector(1, 2, 3)","Vector(2, 3)"]
+    },
+    {
+    "page":629,
+    "questions":["matris","radvektor","kolumnvektor","kolonn","generisk","typargument","typhärledning"],
+    "answers":["indexerbar datastruktur i två dimensioner","matris av dimension 1 × m med m horisontella värden","matris av dimension m × 1 med m vertikala värden","annat ord för kolumn","har abstrakt typparameter, typen är generell","konkret typ, binds till typparameter vid kompilering","kompilatorn beräknar typ ur sammanhanget"]
+    },
+    {
+    "page":638,
+    "questions":["xs(2) + xs(4)","ys(0)","xs(0)","(xs + (0 -> 1)).apply(0)","xs.keySet.apply(2)","xs isDefinedAt 0","xs.getOrElse(0, 7)","xs.maxBy(_._2)","xs.map(p => p._1 -> -p._2)(8)"],
+    "answers":["8","(10, 11)","NoSuchElementException","1","true","false","7","(16, 17)","-9"]
+    }   
+]

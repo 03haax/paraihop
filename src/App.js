@@ -1,40 +1,18 @@
 import './css/App.css';
 import reload from './img/reload.svg';
-import download from './img/download.svg';
+import checklist from './img/checklist.svg';
+import arrow from './img/arrow.svg';
 import { useState } from 'react';
+
+import questions from './json/questions.json'
+import facit from './json/facit.json'
+
+import JSConfetti from 'js-confetti'
 
 export default function App() {
   const [content, setContent] = useState(false);
   const [selected, setSelected] = useState([-1, -1]);
-  const [shake, setShake] = useState(false);
-
-  const handlePaste = (event, test) => {
-    const str = event.clipboardData.getData('text');
-    const all = str.split(/ [0-9]+[ ]{1,}[A-Z] |\n/);
-    
-    if (all.length < 4) { 
-      setShake((prevState) => prevState + 1); 
-      return; 
-    } else {
-      setShake(false);
-    }
-
-    const letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-
-    all.forEach((element, index) => {
-      all[index] = {text: element, set: false, key: (index % 2 === 0 ? index / 2 + 1 : letters[(index - 1) / 2])};
-    });
-
-    setContent(all);
-  }
-
-  const handleDrop = (event, questionIndex) => {
-    event.preventDefault();
-
-    let answerIndex = event.dataTransfer.getData('answerIndex');
-
-    updateArray(questionIndex, answerIndex);
-  }
+  const [page, setPage] = useState("");
 
   const updateArray = (questionIndex, answerIndex) => {
     setContent((prevState) => {
@@ -56,93 +34,120 @@ export default function App() {
     });
   }
 
-  const handleDownload = (content) => {
-    const page = prompt('Page number:');
-    if (page === null) return;
-
-    let longest = 0;
-    for (let i = 0; i < content.length; i+=2) {
-      const test = content[i].text.length;
-      longest = test > longest ? test : longest;
+  const check = (page, content) => {
+    let allCorrect = true;
+    for (let i = 0; i < facit[page].length; i++) {
+      if (facit[page][i] !== content[i * 2 + 1].text) {
+        content[i * 2].set = false;
+        content[i * 2 + 1].set = false;
+        allCorrect = false;
+      }
     }
 
-    let text = '';
-    for (let i = 0; i < content.length; i+=2) {
-      text += `${content[i].text}${' '.repeat(longest - content[i].text.length)} ${content[i].key}${(content.length > 18 && i < 18) ? ' ' : ''} ${content[i+1].key} ${content[i+1].text}${content.length - 2 === i ? '' : '\n'}`;
+    setContent((prevState) => { const update = prevState.slice(); return update });
+
+    if (allCorrect) {
+      const jsConfetti = new JSConfetti()
+
+      jsConfetti.addConfetti()
+    }
+  }
+
+  const handlePage = (page) => {
+    for (let i = 0; i < questions.length; i++) {
+      if (questions[i].page === parseInt(page)) {
+        let array = [];
+
+        const letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+
+        for (let x = 0; x < questions[i].questions.length; x++) {
+          array.push({text: questions[i].questions[x], set: false, key: x + 1});
+          array.push({text: questions[i].answers[x], set: false, key: letters[x]});
+        }
+        setPage(i);
+        setContent(array);
+        break;
+      };
     }
 
-    const blob = new Blob([text], { 
-      type: "text/plain" 
+    //no match
+  }
+
+  const handleKeyDown = (e, page) => {
+    if (e.key === 'Enter') handlePage(page);
+  }
+
+  const handleChange = (e) => {
+    setPage((prevState) => (e.target.validity.valid) ? e.target.value : prevState);
+  }
+
+  const handleClick = (index, i) => {
+    setSelected((prevState) => {
+      const update = prevState.slice();
+      if (update[i] === index) {update[i] = -1; return update}  
+      update[i] = index;
+      if (update[0] !== -1 && update[1] !== -1) {
+        updateArray(update[0], update[1]);
+        return [-1, -1];
+      }
+      return update;
     });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.download = `para ihop s.${page}`;
-    link.href = url;
-    link.click();
   }
 
   return (
     <div className="App">
-      {!content && <textarea
-        key={shake}
-        className={'paste' + (shake ? ' shake' : '')}
-        onPaste={handlePaste}
-        value='Paste text here'
-        readOnly
-        autoFocus
-      />
+      {!content && <div id="page">
+        <label htmlFor="pageInput">
+          Look in the <a href="https://fileadmin.cs.lth.se/pgk/compendium.pdf">compendium</a> and enter a pagenumber to get the corresponding question
+        </label>
+        <input 
+          type="text" 
+          name="page"
+          id="pageInput"
+          onKeyDown={event => handleKeyDown(event, page)}
+          onChange={handleChange}
+          value={page}
+          pattern="[0-9]*"
+          autoFocus
+        />
+        <button 
+          onClick={() => handlePage(page)}
+        >
+          <img src={arrow} alt="get page" />
+        </button>
+      </div>
       }
       {content && <div className="content">
         {content.map((element, index) => { return (
           index % 2 === 0 ?
           <button
-            key={index}
-            className={'question' + (index === selected[0] ? ' selected' : '')}
-            style={{backgroundColor: element.set ? 'var(--color3)' : ''}}
-            onDragOver={event => event.preventDefault()}
-            onDrop={event => handleDrop(event, index)}
-            onClick={() => {
-              setSelected((prevState) => {
-                const update = prevState.slice();
-                update[0] = index;
-                if (update[0] !== -1 && update[1] !== -1) {
-                  console.log(update[0] + ' ' + update[1])
-                  updateArray(update[0], update[1]);
-                  return [-1, -1];
-                }
-                return update;
-              });
-            }}
+            key={element.key}
+            className={`question${index === selected[0] ? ' selected' : ''}${element.set ? ' set' : ''}`}
+            onClick={() => handleClick(index, 0)}
           >
             {element.text}
           </button>
           :
           <button
-            key={index}
-            className={'answer' + (index === selected[1] ? ' selected' : '')}
-            style={{backgroundColor: element.set ? 'var(--color3)' : ''}}
-            onDragStart={(event) => event.dataTransfer.setData('answerIndex', index)}
-            onClick={() => {
-              setSelected((prevState) => {
-                const update = prevState.slice();
-                update[1] = index;
-                if (update[0] !== -1 && update[1] !== -1) {
-                  console.log(update[0] + ' ' + update[1])
-                  updateArray(update[0], update[1]);
-                  return [-1, -1];
-                }
-                return update;
-              });
-            }}
-            //draggable
+            key={element.key}
+            className={`answer${index === selected[1] ? ' selected' : ''}${element.set ? ' set' : ''}`}
+            onClick={() => handleClick(index, 1)}
           >
             {element.text}
           </button>
         )})}
       </div>}
       {content && <div className='buttons'>
-        <button onClick={() => {setContent(false); setSelected([-1, -1])}}><img src={reload} alt='reset input' /></button>
-        <button onClick={() => handleDownload(content)}><img src={download} alt='download' /></button>
+        <button onClick={() => {
+          setContent(false); 
+          setSelected([-1, -1]);
+          setPage("");
+        }}>
+          <img src={reload} alt='reset input' />
+        </button>
+        <button onClick={() => check(page, content)}>
+          <img src={checklist} alt='check answers' />
+        </button>
       </div>}
     </div>
   );
