@@ -1,4 +1,4 @@
-# React paraihop
+# [Para ihop](https://fileadmin.cs.lth.se/pgk/compendium.pdf)
 
 :page_with_curl: Enter a pagenumber from the [compendium](https://fileadmin.cs.lth.se/pgk/compendium.pdf)
 
